@@ -835,7 +835,8 @@
 <section id="contact">
   <p class="contact-label">Have an idea?</p>
   <h2 class="contact-headline">Let's talk!</h2>
-  <form class="contact-form" name="contact" netlify>
+  <form class="contact-form" name="contact" data-netlify="true">
+    <input type="hidden" name="form-name" value="contact">
     <input type="text" name="name" placeholder="Name" autocomplete="name">
     <input type="email" name="email" placeholder="Email" autocomplete="email">
     <textarea name="message" placeholder="Message"></textarea>
