@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanupriya Basoya — Visual Artist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Geist';
+  src: url('./fonts/Geist-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('./fonts/Geist-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('./fonts/Geist-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+  :root {
+    --bg: #f2f0ec;
+    --dark: #111010;
+    --red: #9a0002;
+    --mid: #6b6b6b;
+    --light-border: #d8d5d0;
+    --font-display: 'Geist', sans-serif;
+    --font-body: 'Geist', sans-serif;
+  }
+/* c8352a */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--dark);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--light-border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+  }
+
+  nav a {
+    display: block;
+    text-align: center;
+    padding: 14px 10px;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dark);
+    border-right: 1px solid var(--light-border);
+    transition: background 0.2s;
+  }
+
+  nav a:last-child { border-right: none; }
+  nav a:hover { background: var(--dark); color: var(--bg); }
+
+  /* ── HERO ── */
+  #home {
+    border-bottom: 1px solid var(--light-border);
+  }
+
+  .hero-name {
+    padding: 20px 32px;
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-slider {
+    position: relative;
+    background: var(--red);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    max-height: 70vh;
+    width: 100%;
+  }
+
+  .hero-slider video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-video-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+  }
+
+  .play-icon {
+    width: 64px;
+    height: 64px;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .play-icon svg { fill: white; margin-left: 4px; }
+
+  .hero-tag {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: center;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    white-space: nowrap;
+  }
+
+  .hero-year {
+    position: absolute;
+    bottom: 16px;
+    right: 0;
+    writing-mode: vertical-rl;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.6);
+    padding-right: 10px;
+  }
+
+  .hero-arrow {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    opacity: 0.8;
+  }
+
+  .hero-bio {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    padding: 24px 32px;
+    border-top: 1px solid var(--light-border);
+    align-items: start;
+  }
+
+  .hero-bio p {
+    font-size: 16px;
+    color: var(--mid);
+    max-width: 360px;
+    line-height: 1.65;
+  }
+
+  .hero-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: right;
+  }
+
+  .hero-links a {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dark);
+    border: 1px solid var(--light-border);
+    padding: 5px 10px;
+    transition: all 0.2s;
+  }
+
+  .hero-links a:hover { background: var(--dark); color: var(--bg); border-color: var(--dark); }
+
+  /* ── SERVICES ── */
+  #services {
+    padding: 60px 32px 80px;
+    border-bottom: 1px solid var(--light-border);
+  }
+
+  .services-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .services-list {
+    list-style: none;
+  }
+
+  .services-list li {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 300;
+    padding: 18px 0;
+    cursor: default;
+    text-align: center;
+    transition: color 0.3s;
+  }
+
+  .services-list li:hover {   color: var(--red); }
+
+
+  /* ── WORKS ── */
+  #works {
+    padding: 0;
+    border-bottom: 1px solid var(--light-border);
+  }
+
+  .works-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 40px 32px 32px;
+      justify-content: center; 
+  }
+
+  .works-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 28px;
+}
+  .works-header .asterisk { font-size: 28px; color: var(--red); }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .work-item {
+    border-top: 1px solid var(--light-border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .work-item:nth-child(odd) { border-right: 1px solid var(--light-border); }
+
+  .work-video-wrap {
+    position: relative;
+    background: #1a1a1a;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+
+  .work-video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+
+  .work-meta {
+    padding: 16px 20px 22px;
+  }
+
+  .work-tag-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .work-name {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border: 1px solid var(--light-border);
+    padding: 3px 8px;
+  }
+
+  .work-year {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--mid);
+  }
+
+  .work-desc {
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  .work-link {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--red);
+  border-bottom: 1px solid var(--red);
+  margin-top: 10px;
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+/* .work-link:hover { color: var(--red); border-color: var(--red); } */
+/* video control */
+.vid-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.vid-btn-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: all;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.vid-btn-mute {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  pointer-events: all;
+}
+
+.vid-btn {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vid-btn:hover { background: rgba(0,0,0,0.8); }
+
+  /* ── ABOUT ── */
+  #about {
+    padding: 70px 32px 80px;
+    border-bottom: 1px solid var(--light-border);
+  }
+
+ .about-inner {
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+  .about-left h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+
+  .about-left p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .about-stats {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .stat-item {
+    border-top: 1px solid var(--light-border);
+    padding-top: 16px;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .about-right {
+    position: relative;
+  }
+
+  .about-highlight {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--dark);
+    border-left: 3px solid var(--red);
+    padding-left: 15px;
+    margin-bottom: 32px;
+  }
+
+  .about-right p {
+    font-size: 13.5px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    padding: 70px 32px 80px;
+    border-bottom: 1px solid var(--light-border);
+    text-align: center;
+  }
+
+  .contact-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 16px;
+  }
+
+  .contact-headline {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 50px;
+  }
+
+  .contact-form {
+   display: grid;
+  gap: 16px;
+  max-width: 560px;
+  margin: 0 auto;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--light-border);
+    padding: 14px 16px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: var(--dark); }
+
+  .contact-form textarea { height: 140px; }
+
+  .btn-send {
+    background: var(--dark);
+    color: var(--bg);
+    border: none;
+    padding: 14px 36px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+  }
+
+  .btn-send:hover { background: var(--red); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--light-border);
+  }
+
+  .footer-name {
+    padding: 40px 32px 24px;
+    text-align: center;
+  }
+
+  .footer-star {
+    font-size: 22px;
+    display: block;
+    margin-bottom: 10px;
+    color: var(--red);
+  }
+
+  .footer-name-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 400;
+  }
+
+  .footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid var(--light-border);
+  }
+
+  .footer-col {
+    padding: 20px 24px;
+    border-right: 1px solid var(--light-border);
+  }
+
+  .footer-col:last-child { border-right: none; }
+
+  .footer-col a {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--mid);
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--dark); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--mid);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-name { padding: 20px 24px 16px; }
+    .hero-bio { padding: 18px 24px; }
+    .hero-bio p { max-width: none; }
+    #services { padding: 48px 24px 60px; }
+    .works-header { padding: 30px 24px 24px; }
+    .about-inner { grid-template-columns: 1fr; gap: 36px; }
+    #about { padding: 50px 24px 60px; }
+    #contact { padding: 50px 24px 60px; }
+    .footer-name { padding: 32px 24px 20px; }
+    .footer-col { padding: 16px 18px; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-name { padding: 16px 18px 12px; }
+    .hero-bio { grid-template-columns: 1fr; gap: 14px; padding: 16px 18px; }
+    .hero-links { flex-direction: row; flex-wrap: wrap; justify-content: flex-start; text-align: left; }
+    .hero-slider { aspect-ratio: 3/4; max-height: 75vw; }
+    #services { padding: 36px 18px 48px; }
+    .services-list li { font-size: 1.7rem; }
+    .works-header { padding: 24px 18px 18px; }
+    .works-grid { grid-template-columns: 1fr; }
+    .work-item:nth-child(odd) { border-right: none; }
+    .work-item { border-right: none; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    #about { padding: 36px 18px 48px; }
+    #contact { padding: 36px 18px 48px; }
+    .footer-bottom { grid-template-columns: 1fr; }
+    .footer-col { border-right: none; border-bottom: 1px solid var(--light-border); }
+    .footer-col:last-child { border-bottom: none; }
+    .footer-name { padding: 28px 18px 18px; }
+    .contact-headline { margin-bottom: 32px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-name { animation: fadeUp 0.7s ease both; }
+  .hero-bio { animation: fadeUp 0.7s 0.15s ease both; }
+
+  .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* home button for top */
+.home-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  background: var(--red);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  text-decoration: none;
+  border-radius: 50%;
+  z-index: 999;
+  transition: background 0.2s;
+}
+
+/* .home-btn:hover { background: var(--red); } */
+
+</style>
+</head>
+<body id="top">
+
+<!-- NAV -->
+<nav id="top-nav">
+  <a href="#services">Services</a>
+  <a href="#works">Works</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+    <div class="container">
+  <h1 class="hero-name">Kanupriya Basoya</h1>
+</div>
+ <div class="hero-slider">
+  <video id="hero-vid" muted playsinline>
+    <source src="your-hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="vid-controls">
+    <button class="vid-btn vid-btn-play" onclick="togglePlay('hero-vid', this)">▶</button>
+    <button class="vid-btn vid-btn-mute" onclick="toggleMute('hero-vid', this)">🔇</button>
+  </div>
+  <span class="hero-tag">[ Part of the Sky ]</span>
+  <span class="hero-year">[ 2025 ]</span>
+  <button class="hero-arrow" aria-label="next">›</button>
+</div>
+
+  <div class="hero-bio">
+    <p>I create videos that captivate audiences visually and emotionally, while designing motion graphics that feel smooth and engaging.</p>
+    <div class="hero-links">
+      <a href="https://www.instagram.com/noteveneditor/" target="_blank"> Instagram </a>
+      <a href="https://www.linkedin.com/in/kanupriyabasoya/" target="_blank"> LinkedIn </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="services-label">Here is how I can help</p>
+  <ul class="services-list">
+    <li>Video Editing</li>
+    <li>Motion Graphics</li>
+    <li>Visual Storytelling</li>
+  </ul>
+</section>
+
+
+<!-- WORKS -->
+<section id="works">
+  <div class="works-header">
+
+    <!-- <span class="asterisk">＊</span> -->
+    <h2>Works</h2>
+    <!-- <span class="asterisk">＊</span> -->
+  
+  </div>
+
+  <div class="works-grid">
+
+    <!-- Work 1 -->
+    <article class="work-item">
+      <div class="work-video-wrap">
+        <video id="work-vid-1" muted playsinline preload="metadata">
+          <source src="./assets/work-1-small-black.mp4" type="video/mp4">
+        </video>
+ <div class="vid-controls">
+  <button class="vid-btn vid-btn-play" onclick="togglePlay('work-vid-1', this)">▶</button>
+  <button class="vid-btn vid-btn-mute" onclick="toggleMute('work-vid-1', this)">🔇</button>
+</div>
+      </div>
+      <div class="work-meta">
+        <div class="work-tag-row">
+          <span class="work-name">[ Dashboard UI Redesign ]</span>
+          <!-- <span class="work-year">[ 2025 ]</span> -->
+        </div>
+        <p class="work-desc">Flowdesk is an all-in-one dashboard platform. In this project, I redesigned the interface with a minimal approach, focusing on cleaner layouts, improved hierarchy, and a more intuitive user experience.</p>
+        <a href="#" class="work-link" target="_blank">Learn more →</a>
+      </div>
+    </article>
+
+    <!-- Work 2 -->
+    <article class="work-item">
+      <div class="work-video-wrap">
+       <video id="work-vid-2" muted playsinline preload="metadata">
+          <source src="./assets/work-2-small-black.mp4" type="video/mp4">
+        </video>
+       <div class="vid-controls">
+  <button class="vid-btn vid-btn-play" onclick="togglePlay('work-vid-2', this)">▶</button>
+  <button class="vid-btn vid-btn-mute" onclick="toggleMute('work-vid-2', this)">🔇</button>
+</div>
+      </div>
+      <div class="work-meta">
+        <div class="work-tag-row">
+          <span class="work-name">[ Motion Graphics Edit ]</span>
+          <!-- <span class="work-year">[ 2024 ]</span> -->
+        </div>
+        <p class="work-desc">A motion graphics edit based on a motivational speech, using object animation and text motion to visually support and amplify the message.</p>
+        <a href="#" class="work-link" target="_blank">Learn more →</a>
+      </div>
+    </article>
+
+    <!-- Work 3 -->
+    <article class="work-item">
+      <div class="work-video-wrap">
+        <video id="work-vid-3" muted playsinline preload="metadata">
+          <source src="./assets/work-3-small-black.mp4" type="video/mp4">
+        </video>
+       <div class="vid-controls">
+  <button class="vid-btn vid-btn-play" onclick="togglePlay('work-vid-3', this)">▶</button>
+  <button class="vid-btn vid-btn-mute" onclick="toggleMute('work-vid-3', this)">🔇</button>
+</div>
+      </div>
+      <div class="work-meta">
+        <div class="work-tag-row">
+          <span class="work-name">[ Podcast Short Clip ]</span>
+          <!-- <span class="work-year">[ 2025 ]</span> -->
+        </div>
+        <p class="work-desc">A short-form video created from a podcast clip. The edit combines video cuts with motion graphics to highlight key moments and make the content more engaging.</p>
+        <a href="#" class="work-link" target="_blank">Learn more →</a>
+      </div>
+    </article>
+
+    <!-- Work 4 -->
+    <article class="work-item">
+      <div class="work-video-wrap">
+        <video id="work-vid-4" muted playsinline preload="metadata">
+          <source src="./assets/work-4-small-black.mp4" type="video/mp4">
+        </video>
+       <div class="vid-controls">
+  <button class="vid-btn vid-btn-play" onclick="togglePlay('work-vid-4', this)">▶</button>
+  <button class="vid-btn vid-btn-mute" onclick="toggleMute('work-vid-4', this)">🔇</button>
+</div>
+      </div>
+      <div class="work-meta">
+        <div class="work-tag-row">
+          <span class="work-name">[ Beverage Advertisement ]</span>
+          <!-- <span class="work-year">[ 2024 ]</span> -->
+        </div>
+        <p class="work-desc">A beverage advertisement created for Pulpi, combining energetic edits and motion graphics to highlight the product and create a vibrant visual appeal.</p>
+        <a href="#" class="work-link" target="_blank">Learn more →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-left">
+      <h2>About Me</h2>
+      <p class="about-highlight">I'm Kanupriya Basoya — a visual artist and motion designer based in India. My work spans video editing and motion graphics for clients across the creative and tech industries.</p>
+      <p>I approach every project with one goal — make it work. Whether it's selling a product, explaining a concept, or telling a story, good video does the job without losing its soul. My process is rooted in research, experimentation, and a deep love for the craft. When I'm not editing, I'm watching films, obsessing over light, and finding new ways to make things look better.</p>
+   
+    <!-- <div class="about-stats">
+        <div class="stat-item">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">80+</div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">12</div>
+          <div class="stat-label">Industry Awards</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">30+</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+      </div> -->
+    </div>
+
+   <!-- <div class="about-right">
+      <p class="about-highlight">"I create videos that captivate audiences visually and emotionally, while designing motion graphics that feel smooth and engaging."</p>
+      <p>Every frame I craft is intentional. Whether it's a brand campaign, an art installation, or a personal project, I bring the same level of care to the edit, the timing, and the emotional arc of the story.</p>
+      <p>I've collaborated with design studios, agencies, and independent artists to push the boundaries of what motion can communicate. My process is rooted in research, experimentation, and a deep love for the craft.</p>
+      <p>When I'm not editing, you'll find me exploring experimental film, studying light and composition, and continuously seeking new ways to evolve my visual language.</p>
+    </div> -->
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="contact-label">Have an idea?</p>
+  <h2 class="contact-headline">Let's talk!</h2>
+  <form class="contact-form" name="contact" netlify>
+    <input type="text" name="name" placeholder="Name" autocomplete="name">
+    <input type="email" name="email" placeholder="Email" autocomplete="email">
+    <textarea name="message" placeholder="Message"></textarea>
+    <button type="submit" class="btn-send">Send</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">
+    <span class="footer-star">✦</span>
+    <p class="footer-name-text">Kanupriya Basoya</p>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-col">
+      <a href="#services">Services</a>
+      <a href="#works">Works</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <a href="https://www.instagram.com/noteveneditor/" target="_blank">[ Instagram ]</a>
+      <a href="https://www.linkedin.com/in/kanupriyabasoya/" target="_blank">[ LinkedIn ]</a>
+      <!-- <a href="#">[ Clonify.io ]</a> -->
+    </div>
+    <div class="footer-col">
+      <p class="footer-copy">© 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Video hover play on works
+document.querySelectorAll('.work-video-wrap video').forEach(vid => {
+    vid.addEventListener('error', () => {
+      vid.style.display = 'none';
+      const fb = vid.nextElementSibling;
+      if (fb) fb.style.display = 'flex';
+    });
+});
+
+// Preview frame per video
+document.getElementById('work-vid-1').addEventListener('loadedmetadata', function() {
+  this.currentTime = 10;
+});
+document.getElementById('work-vid-2').addEventListener('loadedmetadata', function() {
+  this.currentTime = 4.5;
+});
+document.getElementById('work-vid-3').addEventListener('loadedmetadata', function() {
+  this.currentTime = 8;
+});
+document.getElementById('work-vid-4').addEventListener('loadedmetadata', function() {
+  this.currentTime = 9;
+});
+document.getElementById('hero-vid').addEventListener('loadedmetadata', function() {
+  this.currentTime = 1;
+});
+
+
+// Play/Pause with auto-hide button
+function togglePlay(id, btn) {
+  const vid = document.getElementById(id);
+  
+   if (vid.paused) {
+    vid.currentTime = 0;
+    vid.play();
+    btn.style.opacity = '0';
+  } else {
+    vid.pause();
+    btn.style.opacity = '1';
+  }
+}
+
+// Tap on video to show/hide play button
+document.querySelectorAll('video').forEach(vid => {
+  vid.addEventListener('click', () => {
+    const controls = vid.nextElementSibling;
+    if (!controls) return;
+    const playBtn = controls.querySelector('.vid-btn-play');
+    if (!playBtn) return;
+
+    if (vid.paused) {
+      vid.play();
+      playBtn.style.opacity = '0';
+    } else {
+      vid.pause();
+      playBtn.style.opacity = '1';
+    }
+  });
+});
+
+// Mute/Unmute
+function toggleMute(id, btn) {
+  const vid = document.getElementById(id);
+  if (vid.paused) return;
+  vid.muted = !vid.muted;
+  btn.textContent = vid.muted ? '🔇' : '🔊';
+}
+
+  // Hero video fallback
+  const heroVid = document.querySelector('.hero-slider video');
+  if (heroVid) {
+    heroVid.addEventListener('error', () => {
+      heroVid.style.display = 'none';
+      document.getElementById('hero-fallback').style.display = 'flex';
+    });
+  }
+
+  // Smooth nav underline on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => {
+          a.style.fontWeight = a.getAttribute('href') === '#' + entry.target.id ? '500' : '400';
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+<a href="#top" class="home-btn" aria-label="Back to top">↑</a>
+</body>
+</html>
