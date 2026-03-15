@@ -29,7 +29,7 @@
   :root {
     --bg: #f2f0ec;
     --dark: #111010;
-    --red: #9a0002;
+    --red: #2f3dbf;
     --mid: #6b6b6b;
     --light-border: #d8d5d0;
     --font-display: 'Geist', sans-serif;
@@ -90,14 +90,44 @@
     letter-spacing: -0.03em;
   }
 
-  .hero-slider {
-    position: relative;
-    background: var(--red);
-    overflow: hidden;
-    aspect-ratio: 4/3;
-    max-height: 70vh;
+.hero-slider {
+  position: relative;
+  background: var(--red);
+  overflow: hidden;
+  width: 100%;
+  height: 70vh;
+}
+
+.hero-image-wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .hero-image-wrap {
     width: 100%;
+    height: 100%;
+      display: flex;
+    align-items: flex-end;
+    justify-content: center;
   }
+
+  .hero-image-wrap img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+}
+  
 
   .hero-slider video {
     width: 100%;
@@ -131,16 +161,24 @@
 
   .hero-tag {
     position: absolute;
-    right: 0;
+    right: -50px;
     top: 50%;
     transform: translateY(-50%) rotate(90deg);
     transform-origin: center;
-    font-size: 9px;
-    letter-spacing: 0.25em;
+    font-size: 12px;
+    letter-spacing: 0.20em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.7);
     white-space: nowrap;
   }
+  /* desktop */
+@media (min-width: 768px) {
+  .hero-tag {
+    right: -80px;
+    font-size: 22px;
+    letter-spacing: 0.2em;
+  }
+}
 
   .hero-year {
     position: absolute;
@@ -662,17 +700,12 @@
     <div class="container">
   <h1 class="hero-name">Kanupriya Basoya</h1>
 </div>
- <div class="hero-slider">
-  <video id="hero-vid" muted playsinline>
-    <source src="your-hero-video.mp4" type="video/mp4">
-  </video>
-  <div class="vid-controls">
-    <button class="vid-btn vid-btn-play" onclick="togglePlay('hero-vid', this)">▶</button>
-    <button class="vid-btn vid-btn-mute" onclick="toggleMute('hero-vid', this)">🔇</button>
+<div class="hero-slider">
+  <div class="hero-image-wrap">
+    <img src="./assets/macbook-hero.png" alt="Kanupriya Basoya">
   </div>
-  <span class="hero-tag">[ Part of the Sky ]</span>
-  <span class="hero-year">[ 2025 ]</span>
-  <button class="hero-arrow" aria-label="next">›</button>
+  <span class="hero-tag">[ visual artist ]</span>
+  <!-- <span class="hero-year">[ 2025 ]</span> -->
 </div>
 
   <div class="hero-bio">
